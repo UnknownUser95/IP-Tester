@@ -41,6 +41,8 @@ public class SubnetShow extends JFrame {
 		// the list for all entries
 		DefaultListModel<String> list = new DefaultListModel<>();
 		
+		list.addElement(String.format("%d subnets", Math.round(Math.pow(2, diffLength))));
+		
 		for(int i = 0; i < (int) Math.round(Math.pow(2, diffLength)); i++) {
 			// counting from 0 to the maximum
 			String counter = Integer.toBinaryString(i);
