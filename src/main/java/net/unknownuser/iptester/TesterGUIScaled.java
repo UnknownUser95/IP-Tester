@@ -229,6 +229,12 @@ public class TesterGUIScaled extends JFrame {
 				int netmask = IPMethods.getNetMask(Integer.parseInt(netmaskStr));
 				int ip = IPMethods.ipToInt(ipStr);
 				
+				// filter useless network masks
+				if(netmask == IPMethods.getNetMask(0) || netmask == IPMethods.getNetMask(32)) {
+					labelInfo.setText("useless");
+					return;
+				}
+				
 				// get the default mask and difference
 				int defaultMaskLength = IPMethods.getDefaultNetmask(IPMethods.binIntStrToInt(IPMethods.getIP(ip).substring(0, 8)));
 				int diffInt = IPMethods.getNetMask(defaultMaskLength) ^ netmask;
