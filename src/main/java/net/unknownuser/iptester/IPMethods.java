@@ -127,7 +127,7 @@ public interface IPMethods {
 	 * @param ip The IP, which should be converted.
 	 * @return The number version of the given IP.
 	 */
-	public static String binaryIPtoNumbers(String ip) {
+	public static String binaryIPtoNumbersStaticLength(String ip) {
 		// IP either with or without dots
 		ip = ip.replaceAll("[.]", "");
 		StringBuilder sb = new StringBuilder();
@@ -144,9 +144,33 @@ public interface IPMethods {
 		return sb.toString();
 	}
 	
+	/**
+	 * Converts a binary IP to the number form of that IP.
+	 * 
+	 * @param ip The IP, which should be converted.
+	 * @return The number version of the given IP.
+	 */
+	public static String binaryIPtoNumbers(String ip) {
+		// IP either with or without dots
+		ip = ip.replaceAll("[.]", "");
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < 32; i += 8) {
+			String number = String.valueOf(binIntStrToInt(ip.substring(i, i + 8)));
+			sb.append(number);
+			sb.append('.');
+		}
+		
+		sb.deleteCharAt(sb.length() - 1);
+		
+		return sb.toString();
+	}
+	
 	public static String getIP(int ip) {
 		String ipStr = Integer.toBinaryString(ip);
 		ipStr = "0".repeat(32 - ipStr.length()) + ipStr;
 		return insertDots(ipStr);
 	}
+	
+	
 }

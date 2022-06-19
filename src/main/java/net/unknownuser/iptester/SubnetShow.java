@@ -54,7 +54,7 @@ public class SubnetShow extends JFrame {
 			subnetNetID = IPMethods.insertDots(subnetNetID);
 			subnetHostID = IPMethods.insertDots(subnetHostID);
 			// add them to the list
-			list.addElement(String.format("%s - %s / %s - %s", subnetNetID, subnetHostID, IPMethods.binaryIPtoNumbers(subnetNetID), IPMethods.binaryIPtoNumbers(subnetHostID)));
+			list.addElement(String.format("%s - %s / %s - %s", subnetNetID, subnetHostID, IPMethods.binaryIPtoNumbersStaticLength(subnetNetID), IPMethods.binaryIPtoNumbersStaticLength(subnetHostID)));
 		}
 		
 		// some setting for a nice look
