@@ -115,9 +115,9 @@ public class TesterGUIScaled extends JFrame {
 			// has to be prevented when using default mask
 			boolean skipReset = false;
 			
-			if(Pattern.matches("[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}", ipText)) {
-				System.out.println("is IP");
-			}
+//			if(Pattern.matches("[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}", ipText)) {
+//				System.out.println("is IP");
+//			}
 			
 			if(IPMethods.isInteger(ipText) || ipText.isBlank() || Pattern.matches("[a-zA-Z]*", ipText)) {
 				isValidIP = false;
