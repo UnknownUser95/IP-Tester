@@ -172,5 +172,23 @@ public interface IPMethods {
 		return insertDots(ipStr);
 	}
 	
-	
+	/**
+	 * Tests whether a given string is an integer.
+	 * 
+	 * @param str The string to be tested.
+	 * @return {@code true} id the given string is a number, {@code false} otherwise
+	 */
+	public static boolean isInteger(String str) {
+		str = str.replaceAll("[ ]", "");
+		if(str.equals(".".repeat(str.length()))) {
+			return false;
+		}
+		
+		try {
+			Integer.parseInt(str);
+			return true;
+		} catch(NumberFormatException exc) {
+			return false;
+		}
+	}
 }

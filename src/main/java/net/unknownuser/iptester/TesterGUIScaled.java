@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -114,11 +115,25 @@ public class TesterGUIScaled extends JFrame {
 			// has to be prevented when using default mask
 			boolean skipReset = false;
 			
+			if(Pattern.matches("[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}", ipText)) {
+				System.out.println("is IP");
+			}
+			
+			if(IPMethods.isInteger(ipText) || ipText.isBlank() || Pattern.matches("[a-zA-Z]*", ipText)) {
+				isValidIP = false;
+				textIP.setForeground(Color.RED);
+				return;
+			}
+			
 			// no mask given, use default
-			if(!ipText.contains("/")) {
-				ipText = ipText + "/" + IPMethods.getDefaultNetmask(Integer.parseInt(ipText.substring(0, ipText.indexOf('.'))));
-				labelInfo.setText("using default mask");
-				skipReset = true;
+			try {
+				if(!ipText.contains("/")) {
+					ipText = ipText + "/" + IPMethods.getDefaultNetmask(Integer.parseInt(ipText.substring(0, ipText.indexOf('.'))));
+					labelInfo.setText("using default mask");
+					skipReset = true;
+				}
+			} catch(NumberFormatException exc) {
+				isValidIP = false;
 			}
 			
 			isValidIP = IPTester.test(ipText);
