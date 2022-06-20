@@ -44,7 +44,7 @@ public class SubnetShow extends JFrame {
 		int subnets = (int) Math.round(Math.pow(2, diffLength));
 		int hostsPerSubnet = (int) Math.round(Math.pow(2, diffStr.substring(diffStr.lastIndexOf('1') + 1).length()) - 2);
 		int diffPerSubnet = (int) Math.round(Math.pow(2, diffStr.length() - diffStr.lastIndexOf('1') - 1));
-		list.addElement(String.format("%d subnets, %d host per subnet, %d diff per subnet", subnets, hostsPerSubnet, diffPerSubnet));
+		list.addElement(String.format("%d subnets, %d hosts per subnet, %d diff per subnet", subnets, hostsPerSubnet, diffPerSubnet));
 		
 		for(int i = 0; i < (int) Math.round(Math.pow(2, diffLength)); i++) {
 			// counting from 0 to the maximum
